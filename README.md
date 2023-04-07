@@ -18,6 +18,7 @@ This is an IoT doorbell project that enables capturing an image by pressing a bu
 ## Installation and Usage:
 - Connect the ESP32-CAM board and the MAX98357 audio DAC+amplifier board to the button
 ![alt text](https://github.com/shaharcc/IoT-Doorbell/blob/main/esp32cam%2Badapter_ttl_usb.jpg)
+<add updated pic>
 - Upload the code to the board using Arduino IDE
 - Connect the board to the Wi-Fi network
 - Install the mobile application on your phone
