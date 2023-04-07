@@ -23,5 +23,5 @@ This is an IoT doorbell project that enables capturing an image by pressing a bu
 - Press the button to capture an image and receive an alert notification on your phone.
 - View the image on your phone using the mobile application.
 
-## Contributors:
-Shahar Chen, Rony Juliusburger and Oren Tal
+### Contributors:
+Shahar Cohen, Rony Juliusburger and Oren Tal
