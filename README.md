@@ -1,13 +1,13 @@
 # IoT-Doorbell
 Smart doorbell with video and audio capabilities- STILL IN PROCESS
 
-This is an IoT doorbell project that enables capturing an image by pressing a button, which sends an alert notification and allows you to view the image on your mobile phone.
+This is an IoT doorbell project that enables capturing an image by pressing a button, which sends an alert notification and allows you to view the image on your mobile phone
 
 ## Features:
 - Image capture on button press
 - Alert notification
 - Image viewing on mobile phone
-- Events log on app
+- Events log on application
 
 ## Hardware Requirements:
 - ESP32-CAM board
@@ -16,12 +16,12 @@ This is an IoT doorbell project that enables capturing an image by pressing a bu
 - Wi-Fi network
 
 ## Installation and Usage:
-- Connect the ESP32-CAM board and the MAX98357 audio DAC+amplifier board to the button.
-- Upload the code to the board using Arduino IDE.
-- Install the mobile application on your phone.
-- Connect the board to the Wi-Fi network.
-- Press the button to capture an image and receive an alert notification on your phone.
-- View the image on your phone using the mobile application.
+- Connect the ESP32-CAM board and the MAX98357 audio DAC+amplifier board to the button
+- Upload the code to the board using Arduino IDE
+- Connect the board to the Wi-Fi network
+- Install the mobile application on your phone
+- Press the button to capture an image and receive an alert notification on your phone
+- View the image on your phone using the mobile application
 
 ### Contributors:
 Shahar Cohen, Rony Juliusburger and Oren Tal
