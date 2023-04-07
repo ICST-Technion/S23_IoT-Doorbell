@@ -25,4 +25,4 @@ This is an IoT doorbell project that enables capturing an image by pressing a bu
 - View the image on your phone using the mobile application
 
 ### Contributors:
-Shahar Cohen, Rony Juliusburger and Oren Tal
+[Shahar Cohen](https://github.com/shaharcc), [Rony Juliusburger](https://github.com/ronyju) and [Oren Tal](https://github.com/shaharcc)
