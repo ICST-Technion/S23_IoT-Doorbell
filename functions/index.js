@@ -21,7 +21,6 @@ exports.sendNotificationOnImageUpload = functions.storage
     const fileRef = admin.storage().bucket().file(filePath);
     const metadata = {
       contentType: 'image/jpeg',
-      // you can add other metadata properties here
     };
 
     await fileRef.setMetadata(metadata);
@@ -32,7 +31,7 @@ exports.sendNotificationOnImageUpload = functions.storage
     });
 
     const firebaseImageUrl = signedUrls[0];
-    functions.logger.log("this is the url from firebase: ", firebaseImageUrl[0])
+    functions.logger.log("this is the url from firebase: ", firebaseImageUrl)
 
     // Send FCM notification with the image download URL
     const payload = {
@@ -42,7 +41,7 @@ exports.sendNotificationOnImageUpload = functions.storage
       },
       android: {
         notification: {
-            imageUrl: firebaseImageUrl[0]
+            imageUrl: firebaseImageUrl
         }
       },
       data: {
