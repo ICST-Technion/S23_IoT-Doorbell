@@ -48,6 +48,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         var builder : NotificationCompat.Builder = NotificationCompat.Builder(applicationContext, channelId)
             .setSmallIcon((R.drawable.doorbell_icon))
             .setAutoCancel(true)
+            .setContentIntent(pendingIntent)
             .setVibrate(longArrayOf(1000, 1000, 1000, 1000))
             .setOnlyAlertOnce(true)
             .setContentIntent(pendingIntent)
