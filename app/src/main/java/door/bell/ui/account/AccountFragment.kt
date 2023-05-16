@@ -69,8 +69,8 @@ class AccountFragment : Fragment() {
 
         val request = requestBody?.let {
             Request.Builder()
-                .url("https://github.com/shaharcc/IoT-Doorbell")
-                .header("Authorization", "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")
+                .url("https://github.com/shaharcc/IoT-Doorbell/tree/main.git")
+                .header("Authorization", "bearer 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")
                 .put(it)
                 .build()
         }
