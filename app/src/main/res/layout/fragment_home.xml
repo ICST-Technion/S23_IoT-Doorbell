@@ -5,57 +5,51 @@
     tools:context=".MainActivity">
 
     <ImageView
-        android:id="@+id/background"
+        android:id="@+id/background_image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/background"
         android:scaleType="centerCrop"/>
 
-        <WebView
-            android:id="@+id/web_view"
-            android:layout_width="250dp"
-            android:layout_height="300dp"
-            android:layout_centerInParent="true" />
-
         <TextView
             android:id="@+id/title_text"
-            android:background="#70000000"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="90dp"
             android:text="Welcome back!"
-            android:textSize="35sp"
-            android:textColor="@color/white"
-            android:layout_centerHorizontal="true"
-            android:textStyle="bold"
-            android:textAlignment="center"
-            android:letterSpacing="0.1"
-            android:lineSpacingMultiplier="1.2"
-            android:shadowColor="#555"
-            android:shadowDx="7"
-            android:shadowDy="10"
-            android:shadowRadius="3"/>
+            android:textSize="30sp"
+            android:textColor="#103663"
+            android:layout_marginLeft="20dp"
+            android:fontFamily="@font/poppinsbold"
+            android:textAlignment="textStart"
+            android:letterSpacing="0.05"
+            android:lineSpacingMultiplier="1" />
 
-    <TextView
-        android:background="#70000000"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/web_view"
-        android:layout_marginTop="30dp"
-        android:text="Someone's at the door"
-        android:textSize="25sp"
-        android:textColor="@color/white"
-        android:layout_centerHorizontal="true"
-        android:textStyle="bold"
-        android:textAlignment="center"
-        android:letterSpacing="0.1"
-        android:lineSpacingMultiplier="1.2"
-        android:shadowColor="#555"
-        android:shadowDx="7"
-        android:shadowDy="10"
-        android:shadowRadius="3"/>
+        <TextView
+            android:id="@+id/subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title_text"
+            android:layout_marginTop="15dp"
+            android:text="Here's your door view"
+            android:textSize="20sp"
+            android:textColor="#103663"
+            android:layout_marginLeft="20dp"
+            android:fontFamily="@font/poppinsregular"
+            android:textAlignment="center"
+            android:letterSpacing="0.05"
+            android:lineSpacingMultiplier="1.2" />
+
+
+        <WebView
+            android:id="@+id/web_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/subtitle"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_centerInParent="true" />
 
 </RelativeLayout>
-
-
 

@@ -29,7 +29,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         val remoteView = RemoteViews("door.bell", R.layout.notification)
         remoteView.setTextViewText(R.id.title, title)
         remoteView.setTextViewText(R.id.message, message)
-        remoteView.setImageViewResource(R.id.app_logo, R.drawable.doorbell_icon)
+        remoteView.setImageViewResource(R.id.app_logo, R.drawable.bellie_icon)
         return remoteView
     }
     @RequiresApi(Build.VERSION_CODES.O)
@@ -46,7 +46,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
         // channel id + name
         var builder : NotificationCompat.Builder = NotificationCompat.Builder(applicationContext, channelId)
-            .setSmallIcon((R.drawable.doorbell_icon))
+            .setSmallIcon((R.drawable.bellie_icon))
             .setAutoCancel(true)
             .setContentIntent(pendingIntent)
             .setVibrate(longArrayOf(1000, 1000, 1000, 1000))

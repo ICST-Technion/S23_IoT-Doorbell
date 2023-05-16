@@ -1,46 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.account.AccountFragment">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".ui.account.AccountFragment">
+
+<TextView
+    android:id="@+id/landlord_title_text"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="90dp"
+    android:text="Landlord:"
+    android:textSize="20sp"
+    android:textColor="#103663"
+    android:layout_marginLeft="20dp"
+    android:fontFamily="@font/poppinsbold"
+    android:textAlignment="textStart"
+    android:letterSpacing="0.05"
+    android:lineSpacingMultiplier="1.2" />
+
+<TextView
+    android:id="@+id/landlord_name_text"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/landlord_title_text"
+    android:layout_marginTop="5dp"
+    android:text="Rony Julisburger"
+    android:textSize="18sp"
+    android:textColor="#103663"
+    android:layout_marginLeft="20dp"
+    android:fontFamily="@font/poppinsregular"
+    android:textAlignment="textStart"
+    android:letterSpacing="0.05"
+    android:lineSpacingMultiplier="1.2" />
+
+<TextView
+    android:id="@+id/address_title_text"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/landlord_name_text"
+    android:layout_marginTop="20dp"
+    android:text="Address:"
+    android:textSize="20sp"
+    android:textColor="#103663"
+    android:layout_marginLeft="20dp"
+    android:fontFamily="@font/poppinsbold"
+    android:textAlignment="textStart"
+    android:letterSpacing="0.05"
+    android:lineSpacingMultiplier="1.2" />
+
+<TextView
+    android:id="@+id/address_text"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/address_title_text"
+    android:layout_marginTop="5dp"
+    android:text="Neve Sha'anan, Haifa"
+    android:textSize="18sp"
+    android:textColor="#103663"
+    android:layout_marginLeft="20dp"
+    android:fontFamily="@font/poppinsregular"
+    android:textAlignment="textStart"
+    android:letterSpacing="0.05"
+    android:lineSpacingMultiplier="1.2" />
+
+<TextView
+    android:id="@+id/message_title_text"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/address_text"
+    android:layout_marginTop="20dp"
+    android:text="Message for visitors:"
+    android:textSize="20sp"
+    android:textColor="#103663"
+    android:layout_marginLeft="20dp"
+    android:fontFamily="@font/poppinsbold"
+    android:textAlignment="textStart"
+    android:letterSpacing="0.05"
+    android:lineSpacingMultiplier="1.2" />
+
+    <Button
+        android:id="@+id/upload_button"
+        android:layout_width="180dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:text="Upload message for visitors"
+        android:textColor="@color/white"
+        android:background="@drawable/button"
+        android:padding="10dp"
+        android:layout_below="@+id/message_title_text"
+        android:layout_alignParentStart="true"/>
 
     <TextView
-        android:id="@+id/text_account"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.163" />
-
-    <TextView
-        android:id="@+id/text_account2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.593" />
-
-    <androidx.constraintlayout.helper.widget.Layer
-        android:id="@+id/layer"
+        android:id="@+id/file_name_text"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:text="No file selected"
+        android:textColor="#103663"
+        android:layout_below="@+id/upload_button"
+        android:layout_alignParentStart="true"
+        android:padding="10dp"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</RelativeLayout>
