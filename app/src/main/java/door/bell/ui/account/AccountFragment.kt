@@ -1,6 +1,5 @@
 package door.bell.ui.account
 
-import android.annotation.SuppressLint
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -11,18 +10,20 @@ import android.widget.Button
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.firestore.FirebaseFirestore
 import door.bell.R
-import okhttp3.*
-import okhttp3.MediaType.Companion.toMediaTypeOrNull
-import okhttp3.RequestBody.Companion.toRequestBody
-import java.io.File
-import java.io.FileOutputStream
-import java.io.IOException
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageMetadata
+import com.google.firebase.storage.StorageReference
 import java.util.*
 
 class AccountFragment : Fragment() {
     private lateinit var uploadButton: Button
     private var audioUri: Uri? = null
+    private val firestore = FirebaseFirestore.getInstance()
+    private val storage = FirebaseStorage.getInstance()
+    private val storageRef = storage.reference
+    private lateinit var audioRef: StorageReference
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,14 +33,15 @@ class AccountFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_account, container, false)
         uploadButton = view.findViewById(R.id.upload_button)
         val audioPicker =
-            registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+            registerForActivityResult(ActivityResultContracts.OpenDocument()) { uri: Uri? ->
                 if (uri != null) {
-                    uploadAudioToGitHub(uri)
+                    audioUri = uri
+                    uploadAudio()
                 }
             }
 
         uploadButton.setOnClickListener {
-            audioPicker.launch("audio/*")
+            audioPicker.launch(arrayOf("audio/*"))
         }
 
         return view
@@ -50,69 +52,72 @@ class AccountFragment : Fragment() {
         audioUri = null
     }
 
-    private fun uploadAudioToGitHub(uri: Uri) {
-        audioUri = uri
-        val selectedAudio: String? = getRealPathFromURI(audioUri!!)
+    private fun uploadAudio() {
+        // Delete previous audio document in Firestore
+        firestore.collection("audio").document("message")
+            .delete()
+            .addOnSuccessListener {
+                // Upload the new audio file to Firebase Cloud Storage
+                val audioFileName = UUID.randomUUID().toString()
+                audioRef = storageRef.child("audio/$audioFileName")
+                val uploadTask = audioRef.putFile(audioUri!!)
 
-        val client = OkHttpClient.Builder()
-            .cookieJar(CookieJar.NO_COOKIES)
-            .build()
-
-        val fileContent = activity?.contentResolver?.openInputStream(audioUri!!)?.readBytes()
-        val requestBody =
-            fileContent?.toRequestBody("application/octet-stream".toMediaTypeOrNull())?.let {
-                MultipartBody.Builder()
-                    .setType(MultipartBody.FORM)
-                    .addFormDataPart("file", selectedAudio, it)
-                    .build()
-            }
-
-        val request = requestBody?.let {
-            Request.Builder()
-                .url("https://github.com/shaharcc/IoT-Doorbell/tree/main.git")
-                .header("Authorization", "bearer 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")
-                .put(it)
-                .build()
-        }
-
-        if (request != null) {
-            Log.i("AUDIO UPLOAD", "handling request 1")
-            client.newCall(request).enqueue(object : Callback {
-                override fun onFailure(call: Call, e: IOException) {
-                    Log.e("AUDIO UPLOAD", "Upload Failed. error: ${e.message}")
-                    activity?.runOnUiThread {
-                        Snackbar.make(uploadButton, "Upload Failed. error: ${e.message}", Snackbar.LENGTH_LONG).show()
+                uploadTask.continueWithTask { task ->
+                    if (!task.isSuccessful) {
+                        throw task.exception!!
                     }
-                }
 
-                override fun onResponse(call: Call, response: Response) {
-                    if (response.isSuccessful) {
-                        Log.i("AUDIO UPLOAD", "Upload Success: ${response.message}")
-                        activity?.runOnUiThread {
-                            Snackbar.make(uploadButton, "Upload Success", Snackbar.LENGTH_LONG).show()
+                    // Set metadata for the uploaded audio file
+                    val metadata = StorageMetadata.Builder()
+                        .setContentType("audio/wav")
+                        .build()
+                    audioRef.updateMetadata(metadata)
+                }.addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        // Get the download URL of the uploaded audio file
+                        audioRef.downloadUrl.addOnSuccessListener { downloadUri ->
+                            val audioUrl = downloadUri.toString()
+                            saveAudioUrlToFirestore(audioUrl)
+                        }.addOnFailureListener { exception ->
+                            Log.e("AUDIO UPLOAD", "Error getting audio download URL: ${exception.message}")
+                            showUploadErrorMessage("Upload Failed. Please try again.")
                         }
                     } else {
-                        val responseBody = response.body?.string()
-                        Log.e("AUDIO UPLOAD", "Upload Failed: ${response.message}")
-                        Log.e("AUDIO UPLOAD", "Response Body: $responseBody")
-                        activity?.runOnUiThread {
-                            Snackbar.make(uploadButton, "Upload Failed: ${response.message}", Snackbar.LENGTH_LONG).show()}
+                        // Handle unsuccessful upload
+                        Log.e("AUDIO UPLOAD", "Upload Failed. Error: ${task.exception?.message}")
+                        showUploadErrorMessage("Upload Failed. Error: ${task.exception?.message}")
                     }
                 }
-            })
+            }
+            .addOnFailureListener { exception ->
+                Log.e("AUDIO UPLOAD", "Error deleting previous audio document: ${exception.message}")
+                showUploadErrorMessage("Upload Failed. Error: Unable to delete previous audio document.")
+            }
+    }
+
+    private fun saveAudioUrlToFirestore(audioUrl: String) {
+        val audioData = hashMapOf("audioUrl" to audioUrl)
+        firestore.collection("audio").document("message")
+            .set(audioData)
+            .addOnSuccessListener {
+                Log.i("AUDIO UPLOAD", "Upload Success. Document ID: message")
+                showUploadSuccessMessage("Upload Succeeded")
+            }
+            .addOnFailureListener { exception ->
+                Log.e("AUDIO UPLOAD", "Upload Failed. Error: ${exception.message}")
+                showUploadErrorMessage("Upload Failed. Error: ${exception.message}")
+            }
+    }
+
+    private fun showUploadSuccessMessage(message: String) {
+        activity?.runOnUiThread {
+            Snackbar.make(uploadButton, message, Snackbar.LENGTH_LONG).show()
         }
     }
 
-    private fun getRealPathFromURI(uri: Uri): String? {
-        val inputStream = context?.contentResolver?.openInputStream(uri)
-        val tempFile = File(context?.cacheDir, "temp_audio_file")
-        val outputStream = FileOutputStream(tempFile)
-        Log.e("AUDIO UPLOAD", "handling request 2")
-        inputStream?.use { input ->
-            outputStream.use { output ->
-                input.copyTo(output)
-            }
+    private fun showUploadErrorMessage(message: String) {
+        activity?.runOnUiThread {
+            Snackbar.make(uploadButton, message, Snackbar.LENGTH_LONG).show()
         }
-        return tempFile.absolutePath
     }
 }
