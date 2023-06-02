@@ -7,9 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ProgressBar
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
-import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.firestore.FirebaseFirestore
 import door.bell.R
 import com.google.firebase.storage.FirebaseStorage
@@ -20,6 +21,7 @@ import java.util.*
 class AccountFragment : Fragment() {
     private lateinit var uploadButton: Button
     private var audioUri: Uri? = null
+    private lateinit var uploadProgress: ProgressBar
     private val firestore = FirebaseFirestore.getInstance()
     private val storage = FirebaseStorage.getInstance()
     private val storageRef = storage.reference
@@ -32,6 +34,8 @@ class AccountFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_account, container, false)
         uploadButton = view.findViewById(R.id.upload_button)
+        uploadProgress = view.findViewById(R.id.upload_progress)
+
         val audioPicker =
             registerForActivityResult(ActivityResultContracts.OpenDocument()) { uri: Uri? ->
                 if (uri != null) {
@@ -53,6 +57,10 @@ class AccountFragment : Fragment() {
     }
 
     private fun uploadAudio() {
+        // Hide the button and show the progress bar
+        uploadButton.visibility = View.INVISIBLE
+        uploadProgress.visibility = View.VISIBLE
+
         // Delete previous audio document in Firestore
         firestore.collection("audio").document("message")
             .delete()
@@ -73,6 +81,10 @@ class AccountFragment : Fragment() {
                         .build()
                     audioRef.updateMetadata(metadata)
                 }.addOnCompleteListener { task ->
+                    // Hide the progress bar and show the button
+                    uploadProgress.visibility = View.INVISIBLE
+                    uploadButton.visibility = View.VISIBLE
+
                     if (task.isSuccessful) {
                         // Get the download URL of the uploaded audio file
                         audioRef.downloadUrl.addOnSuccessListener { downloadUri ->
@@ -90,6 +102,10 @@ class AccountFragment : Fragment() {
                 }
             }
             .addOnFailureListener { exception ->
+                // Hide the progress bar and show the button
+                uploadProgress.visibility = View.INVISIBLE
+                uploadButton.visibility = View.VISIBLE
+
                 Log.e("AUDIO UPLOAD", "Error deleting previous audio document: ${exception.message}")
                 showUploadErrorMessage("Upload Failed. Error: Unable to delete previous audio document.")
             }
@@ -110,14 +126,10 @@ class AccountFragment : Fragment() {
     }
 
     private fun showUploadSuccessMessage(message: String) {
-        activity?.runOnUiThread {
-            Snackbar.make(uploadButton, message, Snackbar.LENGTH_LONG).show()
-        }
+        Toast.makeText(requireContext(), message, Toast.LENGTH_LONG).show()
     }
 
     private fun showUploadErrorMessage(message: String) {
-        activity?.runOnUiThread {
-            Snackbar.make(uploadButton, message, Snackbar.LENGTH_LONG).show()
-        }
+        Toast.makeText(requireContext(), message, Toast.LENGTH_LONG).show()
     }
 }

@@ -38,7 +38,35 @@ class EventsLogFragment : Fragment() {
         val listTask = storageRef.listAll()
 
         listTask.addOnSuccessListener { listResult ->
-            for (item in listResult.items.reversed()) {
+            val sortedItems = listResult.items.sortedWith(Comparator { item1, item2 ->
+                val name1 = item1.name.replace("-", "/")
+                val name2 = item2.name.replace("-", "/")
+
+                val timestamp1 = name1.substring(0, 16)
+                val timestamp2 = name2.substring(0, 16)
+
+                val parts1 = timestamp1.split("/")
+                val parts2 = timestamp2.split("/")
+
+                val yearComparison = parts2[0].compareTo(parts1[0])
+                if (yearComparison != 0) {
+                    return@Comparator yearComparison
+                }
+
+                val monthComparison = parts2[1].compareTo(parts1[1])
+                if (monthComparison != 0) {
+                    return@Comparator monthComparison
+                }
+
+                val dayComparison = parts2[2].substring(0, 2).compareTo(parts1[2].substring(0, 2))
+                if (dayComparison != 0) {
+                    return@Comparator dayComparison
+                }
+
+                parts2[2].substring(3).compareTo(parts1[2].substring(3))
+            })
+
+            for (item in sortedItems) {
                 // Get the download URL for each item
                 item.downloadUrl.addOnSuccessListener { uri ->
                     // Inflate the layout for the container
@@ -51,6 +79,7 @@ class EventsLogFragment : Fragment() {
                     // Set the name of the image to the TextView
                     nameTextView.text = item.name
                         .replace("-", "/")
+                        .replace("^", ":")
                         .replace("_", "\n")
                         .replace(".jpg", "")
                     // Add the container to the eventContainer
