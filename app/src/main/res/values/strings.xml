@@ -11,4 +11,6 @@
     <string name="upload_message">Upload message for visitors</string>
     <string name="welcome">Welcome back!</string>
     <string name="subtitle_doorview">Here\'s your door view</string>
+    <string name="who">Who?</string>
+    <string name="when">When?</string>
 </resources>
