@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.webkit.WebView
+import android.webkit.WebViewClient
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -16,11 +18,7 @@ import door.bell.databinding.FragmentHomeBinding
 
 
 class HomeFragment : Fragment() {
-    private lateinit var viewModel: HomeViewModel
     private var _binding: FragmentHomeBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -28,9 +26,10 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val userName = "Rony"
+        val userName = "David"
         val viewModelFactory = HomeViewModelFactory(userName)
         val homeViewModel = ViewModelProvider(this, viewModelFactory).get(HomeViewModel::class.java)
+
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -41,8 +40,16 @@ class HomeFragment : Fragment() {
         }
 
         val webView: WebView = binding.webView
-        webView.webViewClient = HomeWebViewClient()
-        webView.loadUrl("http://192.168.213.43/")
+        val progressBar: ProgressBar = binding.progressBar
+
+        webView.webViewClient = object : WebViewClient() {
+            override fun onPageFinished(view: WebView?, url: String?) {
+                super.onPageFinished(view, url)
+                progressBar.visibility = View.GONE
+                webView.visibility = View.VISIBLE
+            }
+        }
+        webView.loadUrl("http://192.168.199.132")
         webView.settings.loadWithOverviewMode = true
         webView.settings.useWideViewPort = true
         webView.setInitialScale(1)

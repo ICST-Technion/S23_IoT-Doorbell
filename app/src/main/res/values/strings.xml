@@ -3,4 +3,14 @@
     <string name="title_home">Home</string>
     <string name="title_events_log">Events Log</string>
     <string name="title_account">Account</string>
+    <string name="address">Arava, Karmiel</string>
+    <string name="address_title">Address:</string>
+    <string name="name">David Cohen</string>
+    <string name="landlord">Landlord:</string>
+    <string name="message_for_visitors">Message for visitors:</string>
+    <string name="upload_message">Upload message for visitors</string>
+    <string name="welcome">Welcome back!</string>
+    <string name="subtitle_doorview">Here\'s your door view</string>
+    <string name="who">Who?</string>
+    <string name="when">When?</string>
 </resources>

@@ -11,45 +11,58 @@
         android:src="@drawable/background"
         android:scaleType="centerCrop"/>
 
-        <TextView
-            android:id="@+id/title_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="90dp"
-            android:text="Welcome back!"
-            android:textSize="30sp"
-            android:textColor="#103663"
-            android:layout_marginLeft="20dp"
-            android:fontFamily="@font/poppinsbold"
-            android:textAlignment="textStart"
-            android:letterSpacing="0.05"
-            android:lineSpacingMultiplier="1" />
+    <TextView
+        android:id="@+id/title_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="90dp"
+        android:text="@string/welcome"
+        android:textSize="30sp"
+        android:textColor="#103663"
+        android:layout_marginStart="20dp"
+        android:fontFamily="@font/poppinsbold"
+        android:textAlignment="textStart"
+        android:letterSpacing="0.05"
+        android:lineSpacingMultiplier="1" />
 
-        <TextView
-            android:id="@+id/subtitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/title_text"
-            android:layout_marginTop="15dp"
-            android:text="Here's your door view"
-            android:textSize="20sp"
-            android:textColor="#103663"
-            android:layout_marginLeft="20dp"
-            android:fontFamily="@font/poppinsregular"
-            android:textAlignment="center"
-            android:letterSpacing="0.05"
-            android:lineSpacingMultiplier="1.2" />
+    <TextView
+        android:id="@+id/subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title_text"
+        android:layout_marginTop="15dp"
+        android:text="@string/subtitle_doorview"
+        android:textSize="20sp"
+        android:textColor="#103663"
+        android:layout_marginStart="20dp"
+        android:fontFamily="@font/poppinsregular"
+        android:textAlignment="center"
+        android:letterSpacing="0.05"
+        android:lineSpacingMultiplier="1.2" />
 
+    <FrameLayout
+        android:id="@+id/web_view_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/subtitle"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_centerInParent="true">
 
         <WebView
             android:id="@+id/web_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/subtitle"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_centerInParent="true" />
-
+            android:layout_marginTop="60dp"
+            android:layout_gravity="center_horizontal"
+            android:indeterminate="true"
+            android:indeterminateTint="#103663" />
+    </FrameLayout>
 </RelativeLayout>
-

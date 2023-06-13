@@ -12,6 +12,13 @@ import com.bumptech.glide.Glide
 import com.google.firebase.storage.FirebaseStorage
 import door.bell.R
 import door.bell.databinding.FragmentEventsLogBinding
+import java.lang.Thread.sleep
+import java.text.ParseException
+import java.text.SimpleDateFormat
+import java.util.Locale
+import java.util.concurrent.locks.ReentrantLock
+
+private val mutex = ReentrantLock()
 
 
 class EventsLogFragment : Fragment() {
@@ -38,30 +45,43 @@ class EventsLogFragment : Fragment() {
         val listTask = storageRef.listAll()
 
         listTask.addOnSuccessListener { listResult ->
-            for (item in listResult.items.reversed()) {
-                // Get the download URL for each item
+            val format = SimpleDateFormat("yyyy-MM-dd_HH:mm", Locale.getDefault())
+            val sortedItems = listResult.items.sortedByDescending { item ->
+                val timestampString = item.name.substringBeforeLast(".")
+                try {
+                    val date = format.parse(timestampString)
+                    Log.d("Timestamp", "Parsed date: $date")
+                    date
+                } catch (e: ParseException) {
+                    Log.e("Timestamp", "Failed to parse date: $timestampString")
+                    null
+                }
+            }
+
+            for (item in sortedItems) {
+                mutex.lock()
+                Log.i("events item in sorted list", "item: ${item.name}")
+                sleep(700)
                 item.downloadUrl.addOnSuccessListener { uri ->
-                    // Inflate the layout for the container
-                    val container = LayoutInflater.from(requireContext()).inflate(R.layout.event_item, binding.eventContainer, false)
-                    // Find the ImageView and TextView views within the container using findViewById()
-                    val imageView = container.findViewById<ImageView>(R.id.image_view)
-                    val nameTextView = container.findViewById<TextView>(R.id.timestamp_view)
-                    // Load the image using Glide and set it to the ImageView
-                    Glide.with(requireContext()).load(uri).into(imageView)
-                    // Set the name of the image to the TextView
-                    nameTextView.text = item.name
-                        .replace("-", "/")
-                        .replace("_", "\n")
-                        .replace(".jpg", "")
-                    // Add the container to the eventContainer
-                    binding.eventContainer.addView(container)
+                    try {
+                        val eventContainer = LayoutInflater.from(requireContext()).inflate(R.layout.event_item, binding.eventContainer, false)
+                        val imageView = eventContainer.findViewById<ImageView>(R.id.image_view)
+                        val nameTextView = eventContainer.findViewById<TextView>(R.id.timestamp_view)
+
+                        Glide.with(requireContext()).load(uri).into(imageView)
+                        nameTextView.text = item.name
+                            .replace("-", "/")
+                            .replace("_", "\n")
+                            .replace(".jpg", "")
+                        binding.eventContainer.addView(eventContainer)
+                    } finally {
+                        // Release the lock after modifying the view hierarchy
+                        mutex.unlock()
+                    }
                 }.addOnFailureListener { exception ->
                     Log.e("Events Log", "Failed to download image", exception)
                 }
             }
-
-        }.addOnFailureListener { exception ->
-            Log.e("Events Log", "Failed to list images in folder", exception)
         }
 
         return root
