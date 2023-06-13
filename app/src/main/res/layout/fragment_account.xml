@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".ui.account.AccountFragment">
+
+<TextView
+    android:id="@+id/landlord_title_text"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="80dp"
+    android:text="@string/landlord"
+    android:textSize="20sp"
+    android:textColor="#103663"
+    android:layout_marginStart="20dp"
+    android:fontFamily="@font/poppinsbold"
+    android:textAlignment="textStart"
+    android:letterSpacing="0.05"
+    android:lineSpacingMultiplier="1.2" />
+
+<TextView
+    android:id="@+id/landlord_name_text"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/landlord_title_text"
+    android:layout_marginTop="5dp"
+    android:text="@string/name"
+    android:textSize="18sp"
+    android:textColor="#103663"
+    android:layout_marginStart="20dp"
+    android:fontFamily="@font/poppinsregular"
+    android:textAlignment="textStart"
+    android:letterSpacing="0.05"
+    android:lineSpacingMultiplier="1.2" />
+
+<TextView
+    android:id="@+id/address_title_text"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/landlord_name_text"
+    android:layout_marginTop="40dp"
+    android:text="@string/address_title"
+    android:textSize="20sp"
+    android:textColor="#103663"
+    android:layout_marginStart="20dp"
+    android:fontFamily="@font/poppinsbold"
+    android:textAlignment="textStart"
+    android:letterSpacing="0.05"
+    android:lineSpacingMultiplier="1.2" />
+
+<TextView
+    android:id="@+id/address_text"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/address_title_text"
+    android:layout_marginTop="5dp"
+    android:text="@string/address"
+    android:textSize="18sp"
+    android:textColor="#103663"
+    android:layout_marginStart="20dp"
+    android:fontFamily="@font/poppinsregular"
+    android:textAlignment="textStart"
+    android:letterSpacing="0.05"
+    android:lineSpacingMultiplier="1.2" />
+
+<TextView
+    android:id="@+id/message_title_text"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/address_text"
+    android:layout_marginTop="40dp"
+    android:text="@string/message_for_visitors"
+    android:textSize="20sp"
+    android:textColor="#103663"
+    android:layout_marginStart="20dp"
+    android:fontFamily="@font/poppinsbold"
+    android:textAlignment="textStart"
+    android:letterSpacing="0.05"
+    android:lineSpacingMultiplier="1.2" />
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/message_title_text"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp">
+
+        <Button
+            android:id="@+id/upload_button"
+            android:layout_width="180dp"
+            android:layout_height="70dp"
+            android:text="@string/upload_message"
+            android:textColor="@color/white"
+            android:fontFamily="@font/poppinsregular"
+            android:background="@drawable/button_background"
+            android:padding="10dp" />
+
+        <ProgressBar
+            android:id="@+id/upload_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminateTint="#103663"
+            android:layout_gravity="center" />
+    </FrameLayout>
+</RelativeLayout>
