@@ -49,7 +49,7 @@ class HomeFragment : Fragment() {
                 webView.visibility = View.VISIBLE
             }
         }
-        webView.loadUrl("http://192.168.43.132")
+        webView.loadUrl("http://192.168.199.132")
         webView.settings.loadWithOverviewMode = true
         webView.settings.useWideViewPort = true
         webView.setInitialScale(1)

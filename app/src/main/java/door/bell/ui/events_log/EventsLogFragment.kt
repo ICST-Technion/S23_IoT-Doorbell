@@ -61,24 +61,19 @@ class EventsLogFragment : Fragment() {
             for (item in sortedItems) {
                 mutex.lock()
                 Log.i("events item in sorted list", "item: ${item.name}")
-                sleep(100)
-                // Get the download URL for each item
+                sleep(700)
                 item.downloadUrl.addOnSuccessListener { uri ->
                     try {
-                        // Inflate the layout for the container
-                        val container = LayoutInflater.from(requireContext()).inflate(R.layout.event_item, binding.eventContainer, false)
-                        // Find the ImageView and TextView views within the container using findViewById()
-                        val imageView = container.findViewById<ImageView>(R.id.image_view)
-                        val nameTextView = container.findViewById<TextView>(R.id.timestamp_view)
-                        // Load the image using Glide and set it to the ImageView
+                        val eventContainer = LayoutInflater.from(requireContext()).inflate(R.layout.event_item, binding.eventContainer, false)
+                        val imageView = eventContainer.findViewById<ImageView>(R.id.image_view)
+                        val nameTextView = eventContainer.findViewById<TextView>(R.id.timestamp_view)
+
                         Glide.with(requireContext()).load(uri).into(imageView)
-                        // Set the name of the image to the TextView
                         nameTextView.text = item.name
                             .replace("-", "/")
                             .replace("_", "\n")
                             .replace(".jpg", "")
-                        // Add the container to the eventContainer
-                        binding.eventContainer.addView(container)
+                        binding.eventContainer.addView(eventContainer)
                     } finally {
                         // Release the lock after modifying the view hierarchy
                         mutex.unlock()

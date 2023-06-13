@@ -2,7 +2,7 @@
 
 const functions = require("firebase-functions");
 const admin = require("firebase-admin");
-registrationToken = "exY3FZMyTpaXckIhN-gDU3:APA91bFJhxo40X06MoSfZPYtzPBGBqMvxMyg4b7Ev2xD4xVIDm1q30MWIs8MqaKzF6s6IuPC67qUR-HJroB3idz_1ZrsKt53ggQk8TgigatWuOoCrE1dHrrx5PRc3_IUNZqAAMUoJDR1";
+registrationToken = "eHm59upyQhW2gNXgaV9Vc2:APA91bFRk3gJJngFMA1EpkvRiovyrS68vz-N_FtVzsuP8vds10M8nQ1QTCuMJ5D2xkoVrddD_CWKtfmSYGCcMmo4JJ98a1-1H9_sSR_5Ejq1O-xyIjnzEtGTu2d11C6KEuRmkajhc3RX";
 admin.initializeApp();
 
 exports.sendNotificationOnImageUpload = functions.storage
