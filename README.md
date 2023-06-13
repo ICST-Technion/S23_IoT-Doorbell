@@ -1,9 +1,9 @@
 # IoT-Doorbell
 Smart doorbell with video and audio capabilities.
 
-### On visitor's side:
+#### On visitor's side:
 you press the button to let the house owner know your'e here, and you hear a message they recorded for visitors.
-### On house owner's side:
+#### On house owner's side:
 you get a push notification with an image of the visitor at the door when they press the button. by tapping the notification, you can see a live stream of your doorview. You can also see a log of visitors from all times, and upload a message for visitors.
 
 ## Features:
