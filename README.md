@@ -1,4 +1,4 @@
-# IoT-Doorbell
+# IoT-Doorbell <img src="https://github.com/shaharcc/IoT-Doorbell/blob/master/images/bellie-icon.png" alt="alt text" width="40">
 Smart doorbell with video and audio capabilities.
 
 #### On visitor's side:
@@ -25,7 +25,7 @@ you get a push notification with an image of the visitor at the door when they p
 
 ## App:
 
-<img src="https://github.com/shaharcc/IoT-Doorbell/blob/master/images/Home.jpg" alt="alt text" width="250"> <img src="https://github.com/shaharcc/IoT-Doorbell/blob/master/images/EventsLog.jpg" alt="alt text" width="250"> <img src="https://github.com/shaharcc/IoT-Doorbell/blob/master/images/Account.jpg" alt="alt text" width="250">
+<img src="https://github.com/shaharcc/IoT-Doorbell/blob/master/images/Home.jpg" width="250"> <img src="https://github.com/shaharcc/IoT-Doorbell/blob/master/images/EventsLog.jpg" width="250"> <img src="https://github.com/shaharcc/IoT-Doorbell/blob/master/images/Account.jpg" width="250">
 
 ## Installation and Usage:
 - Follow this connections scheme
