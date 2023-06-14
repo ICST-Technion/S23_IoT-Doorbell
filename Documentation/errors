@@ -1,0 +1,10 @@
+ESP32 erros:
+1. "Connecting to WiFi..." wont stop show up:
+       this means the esp32 cant connetc to the wifi. try checking if your network settings are the same as the one hard-coded in secrets.h.
+
+2. "An Error has occurred while mounting SPIFFS"
+        this might mean that thre is a problem with you HW, try changing to another esp32 
+
+3. "Download failed"
+        this means that firebase failed in downloading the audio file to the SPIFFS, try checking that there is a file in your firebase Storage called /message.wav
+        
