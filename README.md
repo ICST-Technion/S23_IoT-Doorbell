@@ -21,27 +21,30 @@ you get a push notification with an image of the visitor at the door when they p
 
 ## Connections Scheme:
 
-<img src="https://github.com/shaharcc/IoT-Doorbell/blob/master/images/scheme.jpg" alt="alt text" width="200">
+<img src="https://github.com/shaharcc/IoT-Doorbell/blob/master/images/scheme.jpg" alt="alt text" width="500">
 
 ## App:
 
-![](https://github.com/shaharcc/IoT-Doorbell/blob/master/images/Home.jpg | width=100)
-![alt text](https://github.com/shaharcc/IoT-Doorbell/blob/master/images/Home.jpg)
-![alt text](https://github.com/shaharcc/IoT-Doorbell/blob/master/images/EventsLog.jpg | width = 150)
-![alt text](https://github.com/shaharcc/IoT-Doorbell/blob/master/images/Account.jpg | width = 150)
-
-## Libraries Installation:
-- ESP32-audioI2S-master
-- Firebase Arduino Client Library for ESP8266 and ESP32
-- ArduinoJson
+<img src="https://github.com/shaharcc/IoT-Doorbell/blob/master/images/Home.jpg" alt="alt text" width="250"> <img src="https://github.com/shaharcc/IoT-Doorbell/blob/master/images/EventsLog.jpg" alt="alt text" width="250"> <img src="https://github.com/shaharcc/IoT-Doorbell/blob/master/images/Account.jpg" alt="alt text" width="250">
 
 ## Installation and Usage:
 - Follow this connections scheme
 - Upload the code to each board using Arduino IDE
+- Download [libraries](#libraries)
 - Install the mobile application on your phone
 - Press the button to capture an image and receive a notification on your phone
 - View the live stream on your phone using the mobile application
 
+## Libraries:
+- ESP32-audioI2S-master
+- Firebase Arduino Client Library for ESP8266 and ESP32
+- ArduinoJson
+
+ <br />
 
 ### Contributors:
 [Shahar Cohen](https://github.com/shaharcc), [Rony Juliusburger](https://github.com/ronyju) and [Oren Tal](https://github.com/oren-tal)
+
+
+<img src="https://media.giphy.com/media/3rgXBrLlRs4ZlpnVDO/giphy.gif" alt="alt text" width="200">
+
