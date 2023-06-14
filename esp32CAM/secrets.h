@@ -1,14 +1,14 @@
 
 //Replace with your network credentials 
-const char* ssid = "OPPO A52"; 
-const char* password = "ronyrony";
+const char* ssid = ***;
+const char* password = ***;
 
 // Insert Firebase project API Key
-#define API_KEY "AIzaSyD6gDPaIt9KVwttNEB1rgQFIiYragbCxmo"
+#define API_KEY ***
 
 // Insert Authorized Email and Corresponding Password
-#define USER_EMAIL "doorbelliot3@gmail.com"
-#define USER_PASSWORD "orenronyshachar"
+#define USER_EMAIL ***
+#define USER_PASSWORD ***
 
 // Insert Firebase storage bucket ID e.g bucket-name.appspot.com
-#define STORAGE_BUCKET_ID "doorbell2-d3381.appspot.com"
+#define STORAGE_BUCKET_ID ***
