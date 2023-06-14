@@ -1,0 +1,9 @@
+1. Follow the connections scheme that can be found in the ReadMe file and in Assets folder
+2. Upload the code to each board using Arduino IDE
+3. Download libraries:
+    ESP32-audioI2S-master
+    Firebase Arduino Client Library for ESP8266 and ESP32
+    ArduinoJson
+4.Install the mobile application on your phone
+5.Press the button to capture an image and receive a notification on your phone
+6.View the live stream on your phone using the mobile application
