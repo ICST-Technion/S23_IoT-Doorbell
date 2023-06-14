@@ -1,4 +1,5 @@
 
+#include "secrets.h"
 #include "WiFi.h"
 #include "Arduino.h"
 #include <Firebase_ESP_Client.h>
@@ -27,10 +28,23 @@ std::mutex serial_mtx;
 #define AUDIO_PATH_SPIFFS   "message.wav"   
 
 
-//TODO: create secretes
+//------------------- **************in secrets.h :************** -------------------
 //Replace with your network credentials
-const char* ssid ="OPPO A52";// "HOTBOX 4-5028";//"Julius_House";//"HOTBOX 4-5028";//"OPPO A52";//;
-const char* password ="ronyrony";//"0524302574";// "RonyAyelet";//"0524302574";//"ronyrony";//;
+//const char* ssid = ***;
+//const char* password = ***;
+
+// Insert Firebase project API Key
+#define API_KEY ***;
+
+// Insert Authorized Email and Corresponding Password
+#define USER_EMAIL ***;
+#define USER_PASSWORD ***;
+
+// Insert Firebase storage bucket ID e.g bucket-name.appspot.com
+#define STORAGE_BUCKET_ID ***;
+
+//------------------- **************************************** -------------------
+
 
 bool  taskComplete = false;
 bool readyToReadFile = false;
@@ -39,16 +53,6 @@ bool readyToReadFile = false;
 const int checktime = 15000;
 const int time_needed_to_play = 9999999*10;
 int from_time_to_time_download = 0;
-
-// Insert Firebase project API Key
-#define API_KEY "AIzaSyD6gDPaIt9KVwttNEB1rgQFIiYragbCxmo" //TODO: create secretes
-
-// Insert Authorized Email and Corresponding Password
-#define USER_EMAIL "doorbelliot3@gmail.com" //TODO: create secretes
-#define USER_PASSWORD "orenronyshachar"
-
-// Insert Firebase storage bucket ID e.g bucket-name.appspot.com
-#define STORAGE_BUCKET_ID "doorbell2-d3381.appspot.com" //TODO: create secretes
 
 //Define Firebase Data objects
 FirebaseData fbdo;
