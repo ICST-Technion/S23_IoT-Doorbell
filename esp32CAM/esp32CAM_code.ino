@@ -1,7 +1,7 @@
 /*********
   Based on the example provided by the ESP Firebase Client Library
 *********/
-
+#include "secrets.h"
 #include "WiFi.h"
 #include "esp_camera.h"
 #include "Arduino.h"
@@ -24,22 +24,26 @@
 const int buttonPin = 13;
 int buttonState = 0;
 
-//Replace with your network credentials  //TODO: create secretes
-const char* ssid = "OPPO A52";//"ccc"; //"HOTBOX 4-5028";//"OPPO A52";//"Julius_House";  
-const char* password = "ronyrony";//"12345677"; //0524302574";//"ronyrony";//"RonyAyelet"; 
+
+//------------------- **************in secrets.h :************** -------------------
+//const char* ssid = ***   
+//const char* password = ***
+// Insert Firebase project API Key
+//#define API_KEY "***"
+// Insert Authorized Email and Corresponding Password
+//#define USER_EMAIL***
+//#define USER_PASSWORD ***
+
+// Insert Firebase storage bucket ID e.g bucket-name.appspot.com
+//#define STORAGE_BUCKET_ID ***  
+
+//------------------- **************************************** -------------------
 
 // REPLACE WITH YOUR TIMEZONE STRING: https://github.com/nayarsystems/posix_tz_db/blob/master/zones.csv
 String myTimezone =	"IST-2IDT,M3.4.4/26,M10.5.0";
 
-// Insert Firebase project API Key
-#define API_KEY "AIzaSyD6gDPaIt9KVwttNEB1rgQFIiYragbCxmo"  //TODO: create secretes
 
-// Insert Authorized Email and Corresponding Password
-#define USER_EMAIL "doorbelliot3@gmail.com"  //TODO: create secretes
-#define USER_PASSWORD "orenronyshachar"  //TODO: create secretes
 
-// Insert Firebase storage bucket ID e.g bucket-name.appspot.com
-#define STORAGE_BUCKET_ID "doorbell2-d3381.appspot.com"  //TODO: create secretes
 
 //added for video
 #define PART_BOUNDARY "123456789000000000000987654321"
