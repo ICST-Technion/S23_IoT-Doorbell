@@ -34,14 +34,14 @@ std::mutex serial_mtx;
 //const char* password = ***;
 
 // Insert Firebase project API Key
-#define API_KEY ***;
+//#define API_KEY ***;
 
 // Insert Authorized Email and Corresponding Password
-#define USER_EMAIL ***;
-#define USER_PASSWORD ***;
+//#define USER_EMAIL ***;
+//#define USER_PASSWORD ***;
 
 // Insert Firebase storage bucket ID e.g bucket-name.appspot.com
-#define STORAGE_BUCKET_ID ***;
+//#define STORAGE_BUCKET_ID ***;
 
 //------------------- **************************************** -------------------
 
