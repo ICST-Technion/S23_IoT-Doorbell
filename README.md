@@ -19,14 +19,26 @@ you get a push notification with an image of the visitor at the door when they p
 - MAX98357 audio DAC+amplifier board
 - Button
 
-## Installation and Usage: // NEEDS AN UPDATE
-- Connect the ESP32-CAM board and the MAX98357 audio DAC+amplifier board to the button
-![alt text](https://github.com/shaharcc/IoT-Doorbell/blob/main/esp32cam%2Badapter_ttl_usb.jpg) (add updated pic)
-- Upload the code to the board using Arduino IDE
-- Connect the board to the Wi-Fi network
+## Connections Scheme:
+
+![alt text](https://github.com/shaharcc/IoT-Doorbell/blob/master/scheme.jpg)
+
+## App:
+![alt text](https://github.com/shaharcc/IoT-Doorbell/blob/master/images/Home.jpg)
+![alt text](https://github.com/shaharcc/IoT-Doorbell/blob/master/images/EventsLog.jpg)
+![alt text](https://github.com/shaharcc/IoT-Doorbell/blob/master/images/Account.jpg)
+
+## Libraries Installation:
+- ESP32-audioI2S-master
+- Firebase Arduino Client Library for ESP8266 and ESP32
+- ArduinoJson
+
+## Installation and Usage:
+- Follow this connections scheme
+- Upload the code to each board using Arduino IDE
 - Install the mobile application on your phone
 - Press the button to capture an image and receive a notification on your phone
-- View the image on your phone using the mobile application
+- View the live stream on your phone using the mobile application
 
 
 ### Contributors:
