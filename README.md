@@ -21,10 +21,12 @@ you get a push notification with an image of the visitor at the door when they p
 
 ## Connections Scheme:
 
-![alt text](https://github.com/shaharcc/IoT-Doorbell/blob/master/scheme.jpg)
+![alt text](https://github.com/shaharcc/IoT-Doorbell/blob/master/images/scheme.jpg)
 
 ## App:
-![alt text](https://github.com/shaharcc/IoT-Doorbell/blob/master/images/Home.jpg | width = 150)
+
+![](https://github.com/shaharcc/IoT-Doorbell/blob/master/images/Home.jpg | width=100)
+![alt text](https://github.com/shaharcc/IoT-Doorbell/blob/master/images/Home.jpg)
 ![alt text](https://github.com/shaharcc/IoT-Doorbell/blob/master/images/EventsLog.jpg | width = 150)
 ![alt text](https://github.com/shaharcc/IoT-Doorbell/blob/master/images/Account.jpg | width = 150)
 
