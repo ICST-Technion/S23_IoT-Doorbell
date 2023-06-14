@@ -1,0 +1,12 @@
+esp32CAM erros:
+1. "Connecting to WiFi..." wont stop show up:
+       this means the esp32 cant connetc to the wifi. try checking if your network settings are the same as the one hard-coded in secrets.h.
+
+2. "Camera capture failed" 
+       this might mean that thre is a problem with you HW, as we have cleared the SPIFF and yet the camera filed. try changing to another esp32CAM 
+
+3. "Failed to obtain time"
+       this may be realted to your wifi connection, try restarting and log into your wifi again.
+        
+4. "An Error has occurred while mounting SPIFFS"
+       this might mean that thre is a problem with you HW, try changing to another esp32CAM 
