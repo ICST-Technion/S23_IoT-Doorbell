@@ -42,9 +42,15 @@ you get a push notification with an image of the visitor at the door when they p
 
  <br />
 
+
 ### Contributors:
 [Shahar Cohen](https://github.com/shaharcc), [Rony Juliusburger](https://github.com/ronyju) and [Oren Tal](https://github.com/oren-tal)
 
 
 <img src="https://media.giphy.com/media/3rgXBrLlRs4ZlpnVDO/giphy.gif" alt="alt text" width="200">
 
+
+
+
+### Poster:
+![image](https://github.com/shaharcc/IoT-Doorbell/assets/80697658/bbdcdd0a-afdd-46e2-9850-e82a9ca8c675)
