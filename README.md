@@ -21,7 +21,7 @@ you get a push notification with an image of the visitor at the door when they p
 
 ## Connections Scheme:
 
-![alt text](https://github.com/shaharcc/IoT-Doorbell/blob/master/images/scheme.jpg)
+<img src="https://github.com/shaharcc/IoT-Doorbell/blob/master/images/scheme.jpg" alt="alt text" width="200">
 
 ## App:
 
